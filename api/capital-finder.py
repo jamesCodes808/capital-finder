@@ -18,7 +18,18 @@ class handler(BaseHTTPRequestHandler):
             for country in data:
                 capital = country['capital'][0]
                 definitions.append(f"The capital of {dic['country']} is {capital}")
-            message = str(definitions)
+            message = str(definitions[0])
+
+        if "capital" in dic:
+            url = 'https://restcountries.com/v3.1/capital/'
+            r = requests.get(url+dic['capital'])
+            data = r.json()
+            definitions = []
+            for capital in data:
+                country = capital['name']['common']
+                definitions.append(f"{dic['capital']} is the capital of {country}.")
+            message = str(definitions[0])
+
 
         else:
             message = 'Give me a word to define please'
@@ -30,3 +41,4 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(message.encode())
 
         return
+
