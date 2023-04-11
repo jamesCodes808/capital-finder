@@ -8,10 +8,11 @@ class handler(BaseHTTPRequestHandler):
         url_components = parse.urlsplit(s)
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
+        payload = {'country': ''}
 
-        if "word" in dic:
+        if "country" in dic:
             url = 'https://restcountries.com/v3.1/name/'
-            r = requests.get(url+dic['word'])
+            r = requests.get(url+dic['country'])
             data = r.json()
             definitions = []
             for word_data in data:
