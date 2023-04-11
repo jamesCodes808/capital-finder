@@ -15,8 +15,8 @@ class handler(BaseHTTPRequestHandler):
             r = requests.get(url+dic['country'])
             data = r.json()
             definitions = []
-            for word_data in data:
-                definition = word_data['meanings'][0]['definitions'][0]['definition']
+            for country in data:
+                definition = country['capital'][0]
                 definitions.append(definition)
             message = str(definitions)
 
