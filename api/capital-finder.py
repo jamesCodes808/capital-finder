@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
                 definitions.append(f"The capital of {dic['country']} is {capital}")
             message = str(definitions[0])
 
-        if "capital" in dic:
+        elif "capital" in dic:
             url = 'https://restcountries.com/v3.1/capital/'
             r = requests.get(url+dic['capital'])
             data = r.json()
