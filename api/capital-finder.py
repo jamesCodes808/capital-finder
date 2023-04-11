@@ -16,8 +16,8 @@ class handler(BaseHTTPRequestHandler):
             data = r.json()
             definitions = []
             for country in data:
-                definition = country['capital'][0]
-                definitions.append(definition)
+                capital = country['capital'][0]
+                definitions.append(f'The capital of {country} is {capital}')
             message = str(definitions)
 
         else:
