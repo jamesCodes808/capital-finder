@@ -8,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
         url_components = parse.urlsplit(s)
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
-        payload = {'country': ''}
+        # payload = {'country': ''}
 
         if "country" in dic:
             url = 'https://restcountries.com/v3.1/name/'
@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
             definitions = []
             for country in data:
                 capital = country['capital'][0]
-                definitions.append(f'The capital of {country} is {capital}')
+                definitions.append(f"The capital of {dic['country']} is {capital}")
             message = str(definitions)
 
         else:
