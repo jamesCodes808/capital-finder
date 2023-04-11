@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
         dic = dict(query_string_list)
 
         if "word" in dic:
-            url = 'https://restcountries.com/v3.1/capital/'
+            url = 'https://restcountries.com/v3.1/name/'
             r = requests.get(url+dic['word'])
             data = r.json()
             definitions = []
